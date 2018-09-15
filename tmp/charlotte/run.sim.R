@@ -7,10 +7,11 @@ st.all <- list(r = 2.844642, # attentional focus
                d = 12.0, # decision consistency
                eta = 0.09361126, # learning rate
                tau = 0.0, # unsupervised threshold
-               lambda = 1.0,
+               lambda = c(1, 1),
                dims = c(1, 1),
-               w = matrix(rep(0, 4), nrow = 1),
-               colskip = 3)
+               w = NA,
+               cluster = NA,
+               colskip = 2)
 
 out.list <- list()
 

@@ -14,10 +14,10 @@
       out[j, fac[j]] <- 1
     }
   }
-  out <- cbind(rep(0, nrow(out)), out, rep(0, nrow(out)))
-  out[1, 1] <- 1
-  colnames(out)[c(1, 23)] <- c("ctrl", "t")
-  colnames(out)[2:22] <- 1:3
+  out <- cbind(rep(0, nrow(out)), out)
+  out[, 1] <- 3
+  out[1, 1] <- 4
+  colnames(out) <- c("ctrl", rep(1:3, 7))
   return(out)
 }
 

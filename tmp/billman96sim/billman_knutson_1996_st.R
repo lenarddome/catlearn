@@ -8,7 +8,8 @@ st <- list(r = 9.998779,
            d = 1.977312,
            eta = 0.096564,
            tau = 0.5,
-           lambda = 1.0,
+           lambda = c(1, 1, 1, 1, 1, 1, 1),
            dims = rep(3, 7),
-           w = matrix(rep(0, 21), nrow = 1),
-           colskip = 2)
+           w = NA,
+           cluster = NA,
+           colskip = 1)

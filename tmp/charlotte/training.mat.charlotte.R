@@ -53,10 +53,11 @@ for (i in 1:2){norm.pos[, i] <- norm.pos[, i]/max(norm.pos[, i])}
 # also added difficulty coloumn
 diff <- rep(1:3, 6)[order(rep(1:3, 6))]
 trpos <- cbind(rep(0, nrow(norm.pos)), rep(t(diff), 2),
-               norm.pos, rep(1, nrow(norm.pos)))
-trpos <- matrix(rep(t(trpos), 16), ncol = 7, byrow = TRUE)
+               norm.pos)
+trpos <- matrix(rep(t(trpos), 16), ncol = 6, byrow = TRUE)
 trpos <- trpos[sample(nrow(trpos)), ]
-colnames(trpos) <- c("ctrl", "diff", "x", "y", "c1", "c2", "t")
+colnames(trpos) <- c("ctrl", "diff", "x", "y", "c1", "c2")
+trpos[, 1] <- 0
 trpos[1, 1] <- 1
 
 # The exact same thing was done for the remaining patterns
@@ -102,11 +103,10 @@ for (i in 1:2){
   }
 
 trneg <- cbind(rep(0, nrow(norm.neg)), rep(t(diff), 2),
-               norm.neg,
-               rep(1, nrow(norm.neg)))
-trneg <- matrix(rep(t(trneg), 16), ncol = 7, byrow = TRUE)
+               norm.neg)
+trneg <- matrix(rep(t(trneg), 16), ncol = 6, byrow = TRUE)
 trneg <- trneg[sample(nrow(trneg)), ]
-colnames(trneg) <- c("ctrl", "diff", "x", "y", "c1", "c2", "t")
+colnames(trneg) <- c("ctrl", "diff", "x", "y", "c1", "c2")
 trneg[1, 1] <- 1
 
 uni.length <- matrix(c(77.00452, 59.25582, 1, 0,
@@ -149,11 +149,10 @@ uni.length <- matrix(c(77.00452, 59.25582, 1, 0,
 for (i in 1:2){uni.length[, i] <- uni.length[, i]/max(uni.length[, i])}
 
 trlength <- cbind(rep(0, nrow(uni.length)), rep(t(diff), 2),
-                  uni.length,
-                  rep(1, nrow(uni.length)))
-trlength <- matrix(rep(t(trlength), 16), ncol = 7, byrow = TRUE)
+                  uni.length)
+trlength <- matrix(rep(t(trlength), 16), ncol = 6, byrow = TRUE)
 trlength <- trlength[sample(nrow(trlength)), ]
-colnames(trlength) <- c("ctrl", "diff", "x", "y", "c1", "c2", "t")
+colnames(trlength) <- c("ctrl", "diff", "x", "y", "c1", "c2")
 trlength[1, 1] <- 1
 
 uni.ori <- matrix(c(282.34418, 77.12452, 1, 0,
@@ -197,11 +196,11 @@ uni.ori <- matrix(c(282.34418, 77.12452, 1, 0,
 for (i in 1:2){uni.ori[, i] <- uni.ori[, i]/max(uni.ori[, i])}
 
 trori <- cbind(rep(0, nrow(uni.ori)), rep(t(diff), 2),
-               uni.ori,
-               rep(1, nrow(uni.ori)))
-trori <- matrix(rep(t(trori), 16), ncol = 7, byrow = TRUE)
+               uni.ori)
+trori <- matrix(rep(t(trori), 16), ncol = 6, byrow = TRUE)
 trori <- trori[sample(nrow(trori)), ]
-colnames(trori) <- c("ctrl", "diff", "x", "y", "c1", "c2", "t")
+colnames(trori) <- c("ctrl", "diff", "x", "y", "c1", "c2")
+trori[, 1] <- 3
 trori[1, 1] <- 1
 
 training.charlotte <- list(trpos, trneg, trori, trlength)

@@ -68,8 +68,11 @@ slpSUSTAIN <- function(st, tr, xtdo = FALSE) {
     
     ## fac.queried: The positions of the queried dimension values in the
     ## stimulus input
-    
-    fac.queried <- seq(sum(st$dims) + 1, ncol(tr) - colskip + 1)
+    if (tr['ctrl'] %in% c(1, 2)) {
+      fac.queried <- seq(sum(st$dims) + 1, ncol(tr) - colskip + 1)
+    } else {
+      fac.queried <- fac.na
+    }
     
     ## Setting up environment
     ## Arrays for xout
