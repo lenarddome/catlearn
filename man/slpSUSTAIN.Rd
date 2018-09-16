@@ -83,7 +83,7 @@ slpSUSTAIN(st, tr, xtdo = FALSE)
   trial is a supervised learning trial, set tau to 0. slpSUSTAIN can
   accomodate both supervised and unsupervised learning within the same
   simulation, using the \code{ctrl} column in \code{tr} (see below).
-  
+
   \code{lambda} - Vector containing the initial receptive field tuning
   value for each stimulus dimension; the order corresponds to the order
   of dimensions in \code{tr}, below. For a stimulus with three
@@ -133,7 +133,7 @@ slpSUSTAIN(st, tr, xtdo = FALSE)
 
   Unsupervised learning in \code{slpSUSTAIN} is at an early stage of
   testing, as we have not yet established any CIRP for unsupervised
-  learning. 
+  learning.
 
   \code{opt1, opt2, \dots} - optional columns, which may have any names
   you wish, and you may have as many as you like, but they must be
@@ -152,9 +152,6 @@ slpSUSTAIN(st, tr, xtdo = FALSE)
   stimulus, dimension 1 is [0 1] and dimension 2 is [0 1 0] with
   category membership [0 1], then the input representation is [0 1 0 1 0
   0 1].
-  \code{t} - Indicator of supervised vs. unsupervised learning. The
-  values can be either 1 = supervised learning or 0 = unsupervised
-  learning. It can also vary trial by trial, within the same simulation.
 
 }
 

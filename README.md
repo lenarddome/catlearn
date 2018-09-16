@@ -1,3 +1,8 @@
+**This is just a development branch. Files on this branch do not necessarily need to work.**
+
+Please go to https://github.com/ajwills72/catlearn for the released
+version.
+
 # catlearn
 Formal Psychological Models of Categorization and Learning
 
@@ -7,7 +12,7 @@ archive of simulations using those models. It's free and open source
 software ... and always will be.
 
 Catlearn is a package for R, and is very easy to install within that
-environment. 
+environment.
 For a tutorial introduction to catlearn, and the Open Models
 initiative more generally, see [Wills et al. (2017)](http://www.willslab.org.uk/pubs/wills2016plm.pdf).
 There is also some information about catlearn on [R-forge](http://catlearn.r-forge.r-project.org/)
@@ -22,9 +27,8 @@ and then
 `library(catlearn)`.
 
 ## Installing the latest (unstable) version
-If you're not sure what "unstable" means in this context, 
-you probably want to install the **stable** version instead. If you're sure you want the unstable version, 
+If you're not sure what "unstable" means in this context,
+you probably want to install the **stable** version instead. If you're sure you want the unstable version,
 first install devtools and its dependencies. Then run:
 
 `devtools::install_github("ajwills72/catlearn")`
-

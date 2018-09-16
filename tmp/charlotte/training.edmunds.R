@@ -1,13 +1,6 @@
-# trpos - II-pos (information-integration, positive gradient),
-# trneg - II-neg (II, negative gradient),
-# trlength - UD-length (unidimensional based on length),
-# trori - UD-ori (unidimensional based on orientation)
-
 # Import the input patterns
-# Copy pasted them from a csv I converted, and added category representation
-# Values use 5 decimal places (it is an obsession of mine, sorry)
-# After that, the values are normalised, that is to say put between 1 and 0
-# When they are not normalised, the results are significantly different
+
+# II-pos (information-integration, positive gradient),
 norm.pos <- matrix(c(25.00000, 158.14889, 1, 0,
                      56.47368, 189.86889, 1, 0,
                      87.94737, 221.56000, 1, 0,
@@ -45,22 +38,7 @@ norm.pos <- matrix(c(25.00000, 158.14889, 1, 0,
                      285.00000, 151.82222, 0, 1,
                      316.47368, 183.54222, 0, 1), ncol = 4, byrow = TRUE)
 
-for (i in 1:2){norm.pos[, i] <- norm.pos[, i]/max(norm.pos[, i])}
-
-# Create a training matrix for SUSTAIN
-# Just to test if it is working
-# added ctrl coloumn and t coloumn (1 = supervised learning)
-# also added difficulty coloumn
-diff <- rep(1:3, 6)[order(rep(1:3, 6))]
-trpos <- cbind(rep(0, nrow(norm.pos)), rep(t(diff), 2),
-               norm.pos)
-trpos <- matrix(rep(t(trpos), 16), ncol = 6, byrow = TRUE)
-trpos <- trpos[sample(nrow(trpos)), ]
-colnames(trpos) <- c("ctrl", "diff", "x", "y", "c1", "c2")
-trpos[, 1] <- 0
-trpos[1, 1] <- 1
-
-# The exact same thing was done for the remaining patterns
+# II-neg (Information integration with negative gradient),
 norm.neg <- matrix(c(183.43522, 25.00000, 1, 0,
                      151.74240, 56.50068, 1, 0,
                      120.07845, 88.00136, 1, 0,
@@ -98,17 +76,7 @@ norm.neg <- matrix(c(183.43522, 25.00000, 1, 0,
                      189.75646, 285.22301, 0, 1,
                      158.06365, 316.72369, 0, 1), ncol = 4, byrow = TRUE)
 
-for (i in 1:2){
-  norm.neg[, i] <- norm.neg[, i]/max(norm.neg[, i])
-  }
-
-trneg <- cbind(rep(0, nrow(norm.neg)), rep(t(diff), 2),
-               norm.neg)
-trneg <- matrix(rep(t(trneg), 16), ncol = 6, byrow = TRUE)
-trneg <- trneg[sample(nrow(trneg)), ]
-colnames(trneg) <- c("ctrl", "diff", "x", "y", "c1", "c2")
-trneg[1, 1] <- 1
-
+# UD-length (unidimensional based on length),
 uni.length <- matrix(c(77.00452, 59.25582, 1, 0,
                        76.83035, 103.94050, 1, 0,
                        76.67660, 148.60476, 1, 0,
@@ -146,15 +114,7 @@ uni.length <- matrix(c(77.00452, 59.25582, 1, 0,
                        265.32591, 238.62996, 0, 1,
                        265.15174, 283.31464, 0, 1), ncol = 4, byrow = TRUE)
 
-for (i in 1:2){uni.length[, i] <- uni.length[, i]/max(uni.length[, i])}
-
-trlength <- cbind(rep(0, nrow(uni.length)), rep(t(diff), 2),
-                  uni.length)
-trlength <- matrix(rep(t(trlength), 16), ncol = 6, byrow = TRUE)
-trlength <- trlength[sample(nrow(trlength)), ]
-colnames(trlength) <- c("ctrl", "diff", "x", "y", "c1", "c2")
-trlength[1, 1] <- 1
-
+## UD-orientiation
 uni.ori <- matrix(c(282.34418, 77.12452, 1, 0,
                     237.65950, 76.95035, 1, 0,
                     192.99524, 76.79660, 1, 0,
@@ -192,17 +152,9 @@ uni.ori <- matrix(c(282.34418, 77.12452, 1, 0,
                     102.97004, 265.44591, 0, 1,
                     58.28536, 265.27174, 0, 1), ncol = 4, byrow = TRUE)
 
+# Combine training matrix for simulation
+training.edmunds <- list(norm.pos, norm.neg, uni.length, uni.ori)
 
-for (i in 1:2){uni.ori[, i] <- uni.ori[, i]/max(uni.ori[, i])}
+names(training.edmunds) <- c("II-pos","II-neg","UD-length","UD-orientation")
 
-trori <- cbind(rep(0, nrow(uni.ori)), rep(t(diff), 2),
-               uni.ori)
-trori <- matrix(rep(t(trori), 16), ncol = 6, byrow = TRUE)
-trori <- trori[sample(nrow(trori)), ]
-colnames(trori) <- c("ctrl", "diff", "x", "y", "c1", "c2")
-trori[, 1] <- 3
-trori[1, 1] <- 1
-
-training.charlotte <- list(trpos, trneg, trori, trlength)
-rm(uni.ori, uni.length, norm.pos, norm.neg, diff,
-   trneg, trpos, trlength, trori)
+rm(uni.ori, uni.length, norm.pos, norm.neg)

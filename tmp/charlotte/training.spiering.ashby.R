@@ -1,3 +1,4 @@
+# Category A
 spiering.ashby.1 <- matrix(c(0.01,56.09, 1, 0,
                              0.033,67.07, 1, 0,
                              0.056,78.04, 1, 0,
@@ -17,6 +18,7 @@ spiering.ashby.1 <- matrix(c(0.01,56.09, 1, 0,
                              0.135,84.63, 1, 0,
                              0.158,95.61, 1, 0), ncol = 4, byrow = TRUE)
 
+# Category B
 spiering.ashby.2 <- matrix(c(0.074, 25.36, 0, 1,
                              0.098, 36.34, 0, 1,
                              0.121, 47.31, 0, 1,
@@ -36,19 +38,10 @@ spiering.ashby.2 <- matrix(c(0.074, 25.36, 0, 1,
                              0.2, 53.9, 0, 1,
                              0.223, 64.88, 0, 1), ncol = 4, byrow = TRUE)
 
-spiering.ashby <- rbind(spiering.ashby.1,
+spieringashby08 <- rbind(spiering.ashby.1,
                         spiering.ashby.2)
 
-#spiering.ashby[, 2] <- spiering.ashby[, 2]/1000
-#spiering.ashby[, 2] <- spiering.ashby[, 2]/max(spiering.ashby[, 2])
+colnames(spieringashby08) <- c("width", "orientation", "cat_a", "cat_b")
 
-diff <- rep(1:3, 6)[order(rep(1:3, 6))]
+rm(spiering.ashby.1, spiering.ashby.2)
 
-tr <- cbind(rep(0, nrow(spiering.ashby)), rep(t(diff), 2),
-            spiering.ashby, rep(1, nrow(spiering.ashby)))
-
-tr <- matrix(rep(t(tr), 16), ncol = 7, byrow = TRUE)
-tr <- tr[sample(nrow(tr)), ]
-colnames(tr) <- c("ctrl", "difficulty", "x", "y", "c1", "c2", "t")
-
-tr[1, 1] <- 1
