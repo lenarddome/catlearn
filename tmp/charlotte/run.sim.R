@@ -24,7 +24,7 @@ library(catlearn)
 source('training.spiering.ashby.R')
 source('training.edmunds.R')
 
-training.edmunds <- lapply(training.edmunds, .tranform)
+training.edmunds <- lapply(training.edmunds, .transform)
 training.spiering.ashby <- .transform(spieringashby08)
 
 
@@ -41,7 +41,7 @@ init.params <- list(r = 2.844642, # attentional focus
                     cluster = NA,
                     colskip = 2)
 
-output <- list()
+output.edmunds <- list()
 
 for (i in 1:4) {
   output.edmunds[[i]] <- slpSUSTAIN(init.params, training.edmunds[[i]])
