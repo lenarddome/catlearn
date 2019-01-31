@@ -91,13 +91,13 @@ slpSUSTAIN(st, tr, xtdo = FALSE)
   1, 1].
 
   \code{cluster} - A matrix of the initial positions of each recruited
-  cluster. If set to NA then, cluster = NA, each time the network is
+  cluster. If set to NA, \code{cluster = NA}, then each time the network is
   reset, a single cluster will be created, centered on the stimulus
   presented on the current trial.
 
-  \code{w} - A matrix of initial connection weights. If set to NA then,
-  w = NA, each time the network is reset, zero-strength weights to a single
-  cluster will be created.
+  \code{w} - A matrix of initial connection weights. If set to NA as w = NA
+  then, \code{w = NA}, each time the network is reset, zero-strength weights
+  to a single cluster will be created.
 
   \code{dims} - Vector containing the length of each dimension
   (excluding category dimension, see \code{tr}, below), i.e the number
@@ -180,8 +180,9 @@ Lenard Dome, Andy Wills
 
 \note{
 
-1. For additional information on fitting slpSUSTAIN to data, specifically
-   on parameter optimasition, see \emph{Issue #2} on the project's GitHub page
+1. There has been an attempt to data to slpSUSTAIN, an issue was created
+   on GitHub specifically related to parameter optimasition. Check out
+   \emph{Issue #2} on the project's GitHub page
    https://github.com/ajwills72/catlearn/issues/2.
 2. There is no mention of the limits of learning rate, but ideally it should be
    between 0 and 1.
