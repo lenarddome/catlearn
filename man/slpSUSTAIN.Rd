@@ -70,11 +70,11 @@ slpSUSTAIN(st, tr, xtdo = FALSE)
 
   Argument \code{st} must be a list containing the following items:
 
-  \code{r} - Attentional focus parameter
+  \code{r} - Attentional focus parameter, always non-negative.
 
-  \code{beta} - Cluster competition parameter
+  \code{beta} - Cluster competition parameterm, always non-negative.
 
-  \code{d} - Decision consistency parameter
+  \code{d} - Decision consistency parameter, always non-negative
 
   \code{eta} - Learning rate parameter
 
@@ -91,12 +91,12 @@ slpSUSTAIN(st, tr, xtdo = FALSE)
   1, 1].
 
   \code{cluster} - A matrix of the initial positions of each recruited
-  cluster. If set to NA then, each time the network is reset, a single
-  cluster will be created, centered on the stimulus presented on the
-  current trial.
+  cluster. If set to NA then, cluster = NA, each time the network is
+  reset, a single cluster will be created, centered on the stimulus
+  presented on the current trial.
 
   \code{w} - A matrix of initial connection weights. If set to NA then,
-  each time the network is reset, zero-strength weights to a single
+  w = NA, each time the network is reset, zero-strength weights to a single
   cluster will be created.
 
   \code{dims} - Vector containing the length of each dimension
@@ -176,4 +176,13 @@ slpSUSTAIN(st, tr, xtdo = FALSE)
 }
 \author{
 Lenard Dome, Andy Wills
+}
+
+\note{
+
+1. For additional information on fitting slpSUSTAIN to data, specifically
+   on parameter optimasition, see \emph{Issue #2} on the project's GitHub page
+   https://github.com/ajwills72/catlearn/issues/2.
+2. There is no mention of the limits of learning rate, but ideally it should be
+   between 0 and 1.
 }
