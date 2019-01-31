@@ -72,7 +72,7 @@ slpSUSTAIN(st, tr, xtdo = FALSE)
 
   \code{r} - Attentional focus parameter, always non-negative.
 
-  \code{beta} - Cluster competition parameterm, always non-negative.
+  \code{beta} - Cluster competition parameter, always non-negative.
 
   \code{d} - Decision consistency parameter, always non-negative
 
