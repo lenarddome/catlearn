@@ -45,13 +45,13 @@ List slpMK75 (List st, NumericMatrix tr, bool xtdo = false) {
       inputs[k] = tr(i, colskip+k);        // Subset stimuli activations at current trial.
       activ[k] = inputs[k] * wm[k];       // Generate current stimuli weights.
     }
-    
+
     sumET[i] = sum(activ);                // Record output
 
     for (k = 0; k < nw; ++k) {
       delta[k] = lr * aw[k] * (tr(i, ncol-1) - activ[k]); // Calc change in associative strength.
     }
-    
+
     if ( tr(i,0) != 2 ) {                // Unless weights are frozen...
       for (k = 0; k < nw; ++k) {
         // update weights
@@ -62,15 +62,15 @@ List slpMK75 (List st, NumericMatrix tr, bool xtdo = false) {
     }
     if (xtdo) {
       wmOUT(i, _) = wm;                    // If xtdo = true, record updated weights to
-      awOUT(i, _) = aw; 
+      awOUT(i, _) = aw;
                                           // relevant row (i.e. trial).
     }
   }
 
   if (xtdo) {
     return Rcpp::List::create(Rcpp::Named("suma") = sumET,
-                              Rcpp::Named("xout1") = wmOUT,
-                              Rcpp::Named("xout2") = awOUT,
+                              Rcpp::Named("xoutw") = wmOUT,
+                              Rcpp::Named("xouta") = awOUT,
                               Rcpp::Named("w") = wm,
                               Rcpp::Named("aw") = aw);
   } else {
