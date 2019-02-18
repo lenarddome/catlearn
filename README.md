@@ -1,7 +1,16 @@
-**This is just a development branch. Files on this branch do not necessarily need to work.**
+**This is just a development branch for SUSTAIN. Files on this branch do not 
+necessarily need to work.**
 
 Please go to https://github.com/ajwills72/catlearn for the released
 version.
+
+# TODO
+
+- make queried dimensions choosable
+- unsupervised learning sim
+- c++ implementation
+
+---
 
 # catlearn
 Formal Psychological Models of Categorization and Learning
