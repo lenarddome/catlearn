@@ -1,0 +1,72 @@
+Hi Andy - no worries, and thanks again for your earlier help. 
+
+Lenard - please let me know if you have any queries. 
+
+Best wishes,
+
+Tom
+
+-----Original Message-----
+From: Andy Wills (Professor in Psychology) <andy.wills@plymouth.ac.uk> 
+Sent: 05 April 2019 16:41
+To: Beesley, Tom <t.beesley@lancaster.ac.uk>
+Cc: (s) Lenard Dome <lenard.dome@students.plymouth.ac.uk>
+Subject: Re: Simulation
+
+Hi Tom,
+
+Cool stuff! Alas, I am now on holiday, and then a conference, and hence not really around much until after Easter Monday. I'm cc'ing Lenard, who is the guy who has the Mack75 simulation we needed to check a published simulation against.
+
+Lenard - Tom's kindly done this for us. If you have questions between now and Easter Monday, perhaps contact him directly? I can get back in the mix from then :-)
+
+All the best
+
+Andy
+
+
+
+On Fri, Apr 05, 2019 at 11:56:59AM +0000, Beesley, Tom wrote:
+> Hi Andy,
+>
+> I've attached a simulation procedure for a learned predictiveness design 
+(Le Pelley & McLaren, 2003). This is probably more than you need 
+(i.e., procedure/analysis/figures), but you should be able to use this to 
+verify your own simulation. You won't need it, but you can switch from RW to 
+Mack using a parameter at the top.
+>
+> Probably the main data you want to look at is in the "trialData" matrix. 
+This gives all trial details, for all simulated participants, recording 
+trial-to-trail changes in associative strengths and alphas across the columns.
+>
+> I'm wondering what ambiguity there might be for simulations of Mackintosh 75...
+some thoughts...Here I choose to update associative strengths for the two 
+outcomes that are presented. That is, if cues 1 and 2 are presented with 
+outcomes 1 and 2, I update associative strengths for outcomes 1 and 2 
+(the correct and incorrect outcome). I am therefore assuming full feedback - 
+participants would know that outcome 2 is incorrect if outcome 1 was correct. 
+However, when calculating alpha it is done only with respect to how good the 
+cues were at predicting the correct outcome. I suppose these things could be 
+interpreted differently.
+>
+> Let me know how you get on with it and if there's anything I can help with.
+>
+> Best wishes,
+>
+> Tom
+> -------------------------------------------------
+> Dr Tom Beesley
+> Senior Lecturer
+> Department of Psychology
+> C13 Fylde Building
+> Lancaster University
+> https://tombeesley.wordpress.com/
+> email: t.beesley@lancaster.ac.uk<mailto:t.beesley@lancaster.ac.uk>
+> phone: +44 (0) 1524 593937
+> -------------------------------------------------
+>
+
+
+________________________________
+[http://www.plymouth.ac.uk/images/email_footer.gif]<http://www.plymouth.ac.uk/worldclass>
+
+This email and any files with it are confidential and intended solely for the use of the recipient to whom it is addressed. If you are not the intended recipient then copying, distribution or other use of the information contained is strictly prohibited and you should not rely on it. If you have received this email in error please let the sender know immediately and delete it from your system(s). Internet emails are not necessarily secure. While we take every care, University of Plymouth accepts no responsibility for viruses and it is your responsibility to scan emails and their attachments. University of Plymouth does not accept responsibility for any changes made after it was sent. Nothing in this email or its attachments constitutes an order for goods or services unless accompanied by an official order form.
