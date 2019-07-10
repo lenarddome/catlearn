@@ -7,6 +7,6 @@
 
 st <- list(lr = 0.01,
            alr = 0.01,
-           w = rep(0, 5),
-           aw = rep(0, 5),
-           colskip = 4)
+           w = rep(0, 8),
+           aw = rep(0.1, 8),
+           colskip = 5)

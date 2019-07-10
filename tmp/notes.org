@@ -1,0 +1,25 @@
+* Block Types
+
+There will be two block type: ones where uncertain compounds result in
+P(o1) and another where they result in P(o2).
+
+** DONE Experiment 1
+
+Not going to do, as it is essentially a within-lab replication of LePelley
+(2011), but keep in mind for future reference.
+8 stim x 20 blocks
+20x0.7=14 blocks with P(o1) and 20x0.3=7 with P(o2)
+
+** TODO Experiment 2
+
+4 stim x 24 blocks
+24x(2/3)=*16* blocks with P(o1) and 24*(1/3)=*8* blocks with P(o2)
+
+*** STAGE 2
+
+6 training blocks x 4 stim
+
+* Trial Order
+Trials were randomized within blocks, but stimuli was not followed by itself
+across blocks. If block ended in AX, the next block began stimuli other than
+AX. 

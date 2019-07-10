@@ -150,6 +150,6 @@ s2_a_graph <- ggplot(melt(Stg2_a_Results, id = "Block"), aes(x = Block, y = valu
 grid.arrange(s1_v_graph, s2_v_graph, s1_a_graph, s2_a_graph, ncol=2)
 
 # #save
-# g <- arrangeGrob(s1_v_graph, s2_v_graph, s1_a_graph, s2_a_graph, ncol=2) #generates g
-# ggsave(file="graphOutput.png", g) #saves g
+g <- arrangeGrob(s1_v_graph, s2_v_graph, s1_a_graph, s2_a_graph, ncol=2) #generates g
+ggsave(file="graphOutput.png", g) #saves g
 

@@ -45,19 +45,22 @@ List slpMK75 (List st, NumericMatrix tr, bool xtdo = false) {
       inputs[k] = tr(i, colskip+k);        // Subset stimuli activations at current trial.
       activ[k] = inputs[k] * wm[k];       // Generate current stimuli weights.
     }
-
+    
+    Rcout << "The active value is " << activ << std::endl;
+    
     sumET[i] = sum(activ);                // Record output
 
     for (k = 0; k < nw; ++k) {
       delta[k] = lr * aw[k] * (tr(i, ncol-1) - activ[k]); // Calc change in associative strength.
     }
 
+    Rcout << "The delta is " << activ << std::endl;
     if ( tr(i,0) != 2 ) {                // Unless weights are frozen...
       for (k = 0; k < nw; ++k) {
         // update weights
         wm[k] += delta[k] * inputs[k];
         // update attentional weights
-        aw[k] += alr * (abs(tr(i, ncol-1) - wm[-k]) - abs(tr(i, ncol-1) - wm[k])) * inputs[k];
+      aw[k] += alr * ((abs(tr(i, ncol-1) - (sumET[i] - activ[k]))) - abs(tr(i, ncol-1) - activ[k])) * inputs[k];
       }
     }
     if (xtdo) {
