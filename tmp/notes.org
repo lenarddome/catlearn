@@ -3,13 +3,6 @@
 There will be two block type: ones where uncertain compounds result in
 P(o1) and another where they result in P(o2).
 
-** DONE Experiment 1
-
-Not going to do, as it is essentially a within-lab replication of LePelley
-(2011), but keep in mind for future reference.
-8 stim x 20 blocks
-20x0.7=14 blocks with P(o1) and 20x0.3=7 with P(o2)
-
 ** TODO Experiment 2
 
 4 stim x 24 blocks
@@ -20,6 +13,34 @@ Not going to do, as it is essentially a within-lab replication of LePelley
 6 training blocks x 4 stim
 
 * Trial Order
-Trials were randomized within blocks, but stimuli was not followed by itself
-across blocks. If block ended in AX, the next block began stimuli other than
-AX. 
+Tom's version randomizes across blocks, while my version randomizes
+within blocks. It should not affect the overall outcome, although
+LePelley and McLaren randomized within block - just good to know if we
+want to include the data set.
+* Funny Solutions
+** replicating matrices
+Instead of using the pracma package, I used do.call(rbind, replicate(number,
+matrix)), because it is much faster.
+** updating alpha
+The way Tom calculated the magnitude of prediction errors for alpha (by
+which it is essentially updated) is a bit hard to do for a state list
+processor. The reason is that slpMK75 will need to be able to handle
+as many cues at the same time as we want. For this reason I picked the
+equation presented in Le Pelley et al. (2016). This produces the same
+result - I checked it on paper as proof, but we can write a script to
+prove it though.
+** only used outcome 1
+In line with other single linear operators implemented in catlearn (RW, BM),
+slpMK75 only uses one column for outcomes. I can imagine two ways to solve
+this. First, we use -1 instead of 0. It seems to work like a charm. Another
+is to run another sim, but for outcome 2. It can be done by tr[, "t"] <- 
+abs(tr[, "t"] - 1). I would pick the version with -1, because that is the
+computationally less intensive.
+** reset weights but not alphas
+I think it might be useful if the function can reset weights but not alphas.
+For example, there might be a new outcome, where the stimuli remains the
+same. In that case, the state last processor can simply reset weight and
+start learning. This solution is necessary because of the binary
+representation of input and having only one t column. I see no reason to
+reset alphas without resetting the weights as well, let me know of you find
+one.

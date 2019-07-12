@@ -25,6 +25,7 @@ List slpMK75 (List st, NumericMatrix tr, bool xtdo = false) {
   NumericVector inputs(nw);
   NumericVector activ(nw);
   NumericVector delta(nw);
+  NumericVector error(nw);
   NumericVector sumET(nrow);
   NumericMatrix wmOUT(nrow, nw);
   NumericMatrix awOUT(nrow, nw);
@@ -39,6 +40,8 @@ List slpMK75 (List st, NumericMatrix tr, bool xtdo = false) {
     {
       wm = clone(initw);
       aw = clone(initaw);
+    } else if ( tr(i, 0) == 3) {
+      wm = clone(initw);
     }
 
     for (k = 0; k < nw; ++k) {
@@ -46,23 +49,28 @@ List slpMK75 (List st, NumericMatrix tr, bool xtdo = false) {
       activ[k] = inputs[k] * wm[k];       // Generate current stimuli weights.
     }
     
-    Rcout << "The active value is " << activ << std::endl;
-    
     sumET[i] = sum(activ);                // Record output
 
     for (k = 0; k < nw; ++k) {
       delta[k] = lr * aw[k] * (tr(i, ncol-1) - activ[k]); // Calc change in associative strength.
     }
 
-    Rcout << "The delta is " << activ << std::endl;
-    if ( tr(i,0) != 2 ) {                // Unless weights are frozen...
+    if ( tr(i, 0)  != 2) { 
       for (k = 0; k < nw; ++k) {
         // update weights
         wm[k] += delta[k] * inputs[k];
         // update attentional weights
-      aw[k] += alr * ((abs(tr(i, ncol-1) - (sumET[i] - activ[k]))) - abs(tr(i, ncol-1) - activ[k])) * inputs[k];
+        // Le Pelley et al. 2016 version
+        error[k] = sumET[i] - activ[k];
+        aw[k] += alr * fabs(tr(i, ncol-1) - error[k]) - fabs(tr(i, ncol-1) - activ[k]) * inputs[k];
+        if (aw[k] > 1) {
+          aw[k] = 1;
+        } else if (aw[k] < 0.1) {
+          aw[k] = 0.1;
+        }
       }
     }
+
     if (xtdo) {
       wmOUT(i, _) = wm;                    // If xtdo = true, record updated weights to
       awOUT(i, _) = aw;
