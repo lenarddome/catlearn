@@ -22,7 +22,7 @@ trialData <- data.frame(matrix(0,nrow = simPs*(numBlocks_Stg1*8 + numBlocks_Stg2
 colnames(trialData) <- c("simP", "Stage", "Block", "Cue 1", "Cue 2", "Cor Out", "Inc Out",
   "vA_1", "vB_1", "vC_1", "vD_1", "vV_1", "vW_1", "vX_1", "vY_1",
   "vA_2", "vB_2", "vC_2", "vD_2", "vV_2", "vW_2", "vX_2", "vY_2",
-
+  "vA_3", "vB_3", "vC_3", "vD_3", "vV_3", "vW_3", "vX_3", "vY_3",
   "vA_4", "vB_4", "vC_4", "vD_4", "vV_4", "vW_4", "vX_4", "vY_4",
   "aA", "aB", "aC", "aD", "aV", "aW", "aX", "aY") 
 
@@ -67,7 +67,7 @@ for (p in 1:simPs) { # loop for simulated participants
   for (t in 1:nrow(trialSeq)) {
     cues <-  trialSeq[t,3:4] # current trial cues
     outs <-  trialSeq[t,5:6] # current trial outs (correct, incorrect)
-    if (learningRule == 1) { 
+    if (learningRule == 1) {
       # Rescorla-Wagner 1972
       for (o in 1:2) {
         error <- lambda[o] - (v[cues[1],outs[o]] + v[cues[2],outs[o]]) # calculate error based on summed v

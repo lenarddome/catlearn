@@ -2,7 +2,8 @@ lepelleymclaren2003mk75 <- function(params = c(lr = 0.3, alr = 0.1), seed = 7624
     set.seed <- seed
     ## Set training matrix
     bigtr <- NULL
-        bigtr <- beesley2005train()
+    bigtr <- lepelleymclaren2003ap()
+    out[,"t"][out[, "t"] == 0] <- -1
     
     # Set initial model state
     init.state <- list(lr = params[1],
